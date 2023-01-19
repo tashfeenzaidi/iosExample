@@ -7,7 +7,12 @@
 
 import SwiftUI
 var tap : String = "hello world"
+
 struct firstScreen: View {
+    
+    @State private var username: String = ""
+    @State private var password: String = ""
+    
     var body: some View {
         GroupBox(label:
                     Label("End-User Agreement", systemImage: "building.columns")
@@ -20,6 +25,16 @@ struct firstScreen: View {
             Toggle(isOn: .constant(true)) {
                 Text("I agree to the above terms")
             }
+            
+            Form {
+                TextField(text: $username, prompt: Text("Required")) {
+                    Text("Username")
+                }
+                SecureField(text: $password, prompt: Text("Required")) {
+                    Text("Password")
+                }
+            }
+            
             
         }
     }
